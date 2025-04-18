@@ -71,7 +71,7 @@ class _AnggotaPageState extends State<AnggotaPage> {
                   GestureDetector(
                     onTap: _logout,
                     child: Image.asset(
-                      'icons/logout.png',
+                      'assets/icons/logout.png',
                       width: 40,
                       height: 40,
                     ),
@@ -98,12 +98,12 @@ class _AnggotaPageState extends State<AnggotaPage> {
                       nim: '1232201',
                     ),
                     AnggotaCard(
-                      photoPath: 'images/risaa.jpg',
+                      photoPath: 'assets/images/risaa.jpg',
                       name: 'Ayrisa Trianida',
                       nim: '123220193',
                     ),
                     AnggotaCard(
-                      photoPath: 'images/member4.jpg',
+                      photoPath: 'assets/images/irishhhh.jpg',
                       name: 'Gertrud Irish Jovincia',
                       nim: '123220197',
                     ),

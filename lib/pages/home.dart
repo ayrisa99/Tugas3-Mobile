@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tugas3_tpm/pages/anggota.dart';
 import 'package:tugas3_tpm/pages/fitur/bilangan.dart';
+import 'package:tugas3_tpm/pages/fitur/rekomendasi.dart';
 import 'package:tugas3_tpm/pages/fitur/stopwatch.dart';
 
 class HomePage extends StatefulWidget {
@@ -49,7 +50,7 @@ class _HomePageState extends State<HomePage> {
                       // Tambahkan logika untuk logout jika perlu
                     },
                     child: Image.asset(
-                      'icons/logout.png',
+                      'assets/icons/logout.png',
                       width: 40,
                       height: 40,
                     ),
@@ -70,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                       );
                     },
                     child: SettingTile(
-                      iconPath: 'icons/stopwatch.png',
+                      iconPath: 'assets/icons/stopwatch.png',
                       title: 'Stopwatch',
                       subtitle: 'Lacak waktu dengan akurat',
                     ),
@@ -85,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                       );
                     },
                     child: SettingTile(
-                      iconPath: 'icons/bilangan.png',
+                      iconPath: 'assets/icons/bilangan.png',
                       title: 'Jenis Bilangan',
                       subtitle: 'Pelajari dan pahami jenis-jenis bilangan',
                     ),
@@ -95,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                   InkWell(
                     onTap: () {},
                     child: SettingTile(
-                      iconPath: 'icons/location.png',
+                      iconPath: 'assets/icons/location.png',
                       title: 'Tracking LBS',
                       subtitle: 'Pantau lokasi secara real-time',
                     ),
@@ -105,7 +106,7 @@ class _HomePageState extends State<HomePage> {
                   InkWell(
                     onTap: () {},
                     child: SettingTile(
-                      iconPath: 'icons/waktu.png',
+                      iconPath: 'assets/icons/waktu.png',
                       title: 'Konversi Waktu',
                       subtitle: 'Ubah satuan waktu dengan mudah',
                     ),
@@ -113,9 +114,16 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 10),
                   // Rekomendasi Item
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RekomendasiPage(),
+                        ),
+                      );
+                    },
                     child: SettingTile(
-                      iconPath: 'icons/rekomendasi.png',
+                      iconPath: 'assets/icons/rekomendasi.png',
                       title: 'Rekomendasi',
                       subtitle: 'Dapatkan saran yang sesuai untukmu',
                     ),
@@ -195,7 +203,7 @@ class SettingTile extends StatelessWidget {
               ],
             ),
           ),
-          Image.asset('icons/back.png', width: 16, height: 16),
+          Image.asset('assets/icons/back.png', width: 16, height: 16),
         ],
       ),
     );

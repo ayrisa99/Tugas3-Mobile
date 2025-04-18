@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
             Center(
               child: SizedBox(
                 height: 350,
-                child: Image.asset('images/login.png'),
+                child: Image.asset('assets/images/login.png'),
               ),
             ),
             const SizedBox(height: 24),

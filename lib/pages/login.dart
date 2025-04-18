@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tugas3_tpm/pages/home.dart';
+import 'package:tugas3_tpm/utils/session_manager.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -13,13 +14,11 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
 
   // Fungsi untuk menangani proses login
-  void _login() {
+  void _login() async {
     final email = _emailController.text;
     final password = _passwordController.text;
 
-    // Cek apakah email dan password tidak kosong
     if (email.isEmpty || password.isEmpty) {
-      // Tampilkan pesan kesalahan jika email atau password kosong
       showDialog(
         context: context,
         builder:
@@ -37,13 +36,29 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
 
-    // Proses login berhasil, arahkan ke halaman utama
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HomePage(),
-      ), // Pastikan kamu sudah memiliki halaman HomePage
-    );
+    // Cek login sederhana
+    if (email == 'a' && password == '1') {
+      await SessionManager.saveLogin(email); // Kirim email sebagai username
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder:
+            (context) => AlertDialog(
+              title: Text('Login Gagal'),
+              content: Text('Username atau Password salah.'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text('OK'),
+                ),
+              ],
+            ),
+      );
+    }
   }
 
   @override

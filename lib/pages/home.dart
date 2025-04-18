@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tugas3_tpm/pages/anggota.dart';
 import 'package:tugas3_tpm/pages/fitur/bilangan.dart';
+import 'package:tugas3_tpm/pages/fitur/konversi.dart';
 import 'package:tugas3_tpm/pages/fitur/rekomendasi.dart';
 import 'package:tugas3_tpm/pages/fitur/stopwatch.dart';
+import 'package:tugas3_tpm/pages/fitur/tracking_lbs.dart';
+import 'package:tugas3_tpm/pages/login.dart';
+import 'package:tugas3_tpm/utils/session_manager.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -30,6 +34,22 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  String _username = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUsername();
+  }
+
+  void _loadUsername() async {
+    final email =
+        await SessionManager.getUsername(); // Ambil email dari session
+    setState(() {
+      _username = email ?? 'User'; // Jika tidak ada email, tampilkan 'User'
+    });
+  }
+
   Widget _buildContent() {
     switch (_selectedIndex) {
       case 0:
@@ -41,13 +61,22 @@ class _HomePageState extends State<HomePage> {
               Row(
                 children: [
                   Text(
-                    'Home',
+                    'Selamat datang, $_username!',
                     style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                   ),
                   Spacer(),
                   GestureDetector(
-                    onTap: () {
-                      // Tambahkan logika untuk logout jika perlu
+                    onTap: () async {
+                      // Hapus session
+                      await SessionManager.logout();
+
+                      // Arahkan pengguna kembali ke halaman login
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginPage(),
+                        ), // Ganti dengan halaman login
+                      );
                     },
                     child: Image.asset(
                       'assets/icons/logout.png',
@@ -94,7 +123,14 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 10),
                   // Tracking LBS Item
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TrackingLBSSimplePage(),
+                        ),
+                      );
+                    },
                     child: SettingTile(
                       iconPath: 'assets/icons/location.png',
                       title: 'Tracking LBS',
@@ -104,7 +140,14 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(height: 10),
                   // Konversi Waktu Item
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => KonversiWaktuPage(),
+                        ),
+                      );
+                    },
                     child: SettingTile(
                       iconPath: 'assets/icons/waktu.png',
                       title: 'Konversi Waktu',
@@ -172,11 +215,13 @@ class SettingTile extends StatelessWidget {
   final String iconPath;
   final String title;
   final String subtitle;
+  final VoidCallback? onLogout; // Menambahkan callback untuk logout
 
   const SettingTile({
     required this.iconPath,
     required this.title,
     required this.subtitle,
+    this.onLogout, // Menambahkan parameter untuk logout
   });
 
   @override

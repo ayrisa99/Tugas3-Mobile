@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class BilanganPage extends StatefulWidget {
+  const BilanganPage({super.key});
+
   @override
   _BilanganPageState createState() => _BilanganPageState();
 }
@@ -115,7 +117,6 @@ class _BilanganPageState extends State<BilanganPage> {
             SizedBox(height: 30),
             ElevatedButton(
               onPressed: _checkNumber,
-              child: Text('Cek Bilangan'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFFFF7F50),
                 foregroundColor: Colors.white,
@@ -125,6 +126,7 @@ class _BilanganPageState extends State<BilanganPage> {
                 ),
                 textStyle: TextStyle(fontSize: 18),
               ),
+              child: Text('Cek Bilangan'),
             ),
             SizedBox(height: 30),
             Expanded(

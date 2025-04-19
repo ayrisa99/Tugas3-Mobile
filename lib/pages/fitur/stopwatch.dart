@@ -4,6 +4,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class StopwatchPage extends StatefulWidget {
+  const StopwatchPage({super.key});
+
   @override
   _StopwatchPageState createState() => _StopwatchPageState();
 }
@@ -12,7 +14,7 @@ class _StopwatchPageState extends State<StopwatchPage> {
   Timer? _timer;
   int _milliseconds = 0;
   bool _isRunning = false;
-  List<int> _laps = [];
+  final List<int> _laps = [];
 
   void _start() {
     if (_isRunning) return;

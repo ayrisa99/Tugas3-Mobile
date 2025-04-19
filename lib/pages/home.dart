@@ -10,6 +10,8 @@ import 'package:tugas3_tpm/pages/login.dart';
 import 'package:tugas3_tpm/utils/session_manager.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -218,7 +220,7 @@ class SettingTile extends StatelessWidget {
   final String subtitle;
   final VoidCallback? onLogout; // Menambahkan callback untuk logout
 
-  const SettingTile({
+  const SettingTile({super.key, 
     required this.iconPath,
     required this.title,
     required this.subtitle,

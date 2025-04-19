@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
 class TrackingLBSSimplePage extends StatefulWidget {
+  const TrackingLBSSimplePage({super.key});
+
   @override
   _TrackingLBSSimplePageState createState() => _TrackingLBSSimplePageState();
 }
@@ -69,8 +71,7 @@ class _TrackingLBSSimplePageState extends State<TrackingLBSSimplePage> {
         child: Column(
           children: [
             ElevatedButton(
-              onPressed: _getLocation, // ⬅️ TOMBOL MANGGIL FUNGSINYA
-              child: Text('Lihat Lokasi Saya'),
+              onPressed: _getLocation,
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFFFF7F50),
                 foregroundColor: Colors.white,
@@ -79,7 +80,8 @@ class _TrackingLBSSimplePageState extends State<TrackingLBSSimplePage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
-              ),
+              ), // ⬅️ TOMBOL MANGGIL FUNGSINYA
+              child: Text('Lihat Lokasi Saya'),
             ),
             SizedBox(height: 24),
             Text(

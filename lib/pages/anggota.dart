@@ -5,12 +5,14 @@ import 'package:tugas3_tpm/pages/login.dart';
 import 'package:tugas3_tpm/utils/session_manager.dart';
 
 class AnggotaPage extends StatefulWidget {
+  const AnggotaPage({super.key});
+
   @override
   _AnggotaPageState createState() => _AnggotaPageState();
 }
 
 class _AnggotaPageState extends State<AnggotaPage> {
-  int _selectedIndex = 1;
+  final int _selectedIndex = 1;
 
   void _onTabTapped(int index) {
     if (index == _selectedIndex) return;
@@ -174,7 +176,7 @@ class AnggotaCard extends StatelessWidget {
   final String name;
   final String nim;
 
-  const AnggotaCard({
+  const AnggotaCard({super.key, 
     required this.photoPath,
     required this.name,
     required this.nim,

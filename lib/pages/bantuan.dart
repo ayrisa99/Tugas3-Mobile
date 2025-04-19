@@ -5,6 +5,8 @@ import 'package:tugas3_tpm/pages/login.dart';
 import 'package:tugas3_tpm/utils/session_manager.dart';
 
 class BantuanPage extends StatefulWidget {
+  const BantuanPage({super.key});
+
   @override
   _BantuanPageState createState() => _BantuanPageState();
 }

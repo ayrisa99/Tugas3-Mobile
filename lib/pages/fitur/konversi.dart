@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class KonversiWaktuPage extends StatefulWidget {
+  const KonversiWaktuPage({super.key});
+
   @override
   _KonversiWaktuPageState createState() => _KonversiWaktuPageState();
 }
@@ -85,7 +87,6 @@ class _KonversiWaktuPageState extends State<KonversiWaktuPage> {
             SizedBox(height: 30),
             ElevatedButton(
               onPressed: _convertTime,
-              child: Text('Konversi'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFFFF7F50),
                 foregroundColor: Colors.white,
@@ -95,6 +96,7 @@ class _KonversiWaktuPageState extends State<KonversiWaktuPage> {
                 ),
                 textStyle: TextStyle(fontSize: 18),
               ),
+              child: Text('Konversi'),
             ),
             SizedBox(height: 30),
             Expanded(

@@ -76,6 +76,8 @@ flutter:
     - assets/images/login.png
     - assets/images/risaa.jpg
     - assets/images/irishhhh.jpg
+    - assets/images/anu.jpg
+    - assets/images/fadhil.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

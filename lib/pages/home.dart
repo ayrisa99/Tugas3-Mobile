@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tugas3_tpm/pages/anggota.dart';
+import 'package:tugas3_tpm/pages/bantuan.dart';
 import 'package:tugas3_tpm/pages/fitur/bilangan.dart';
 import 'package:tugas3_tpm/pages/fitur/konversi.dart';
 import 'package:tugas3_tpm/pages/fitur/rekomendasi.dart';
@@ -27,10 +28,10 @@ class _HomePageState extends State<HomePage> {
         MaterialPageRoute(builder: (context) => AnggotaPage()),
       );
     } else if (_selectedIndex == 2) {
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => BantuanPage()),
-      // );
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => BantuanPage()),
+      );
     }
   }
 

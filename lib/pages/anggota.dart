@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:tugas3_tpm/pages/bantuan.dart';
 import 'package:tugas3_tpm/pages/home.dart';
+import 'package:tugas3_tpm/pages/login.dart';
+import 'package:tugas3_tpm/utils/session_manager.dart';
 
 class AnggotaPage extends StatefulWidget {
   @override
@@ -18,10 +21,10 @@ class _AnggotaPageState extends State<AnggotaPage> {
         MaterialPageRoute(builder: (context) => HomePage()),
       );
     } else if (index == 2) {
-      // Navigator.pushReplacement(
-      //   context,
-      //   MaterialPageRoute(builder: (context) => BantuanPage()),
-      // );
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => BantuanPage()),
+      );
     }
   }
 
@@ -68,8 +71,27 @@ class _AnggotaPageState extends State<AnggotaPage> {
                     style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                   ),
                   Spacer(),
+                  // GestureDetector(
+                  //   onTap: _logout,
+                  //   child: Image.asset(
+                  //     'assets/icons/logout.png',
+                  //     width: 40,
+                  //     height: 40,
+                  //   ),
+                  // ),
                   GestureDetector(
-                    onTap: _logout,
+                    onTap: () async {
+                      // Hapus session
+                      await SessionManager.logout();
+
+                      // Arahkan pengguna kembali ke halaman login
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LoginPage(),
+                        ), // Ganti dengan halaman login
+                      );
+                    },
                     child: Image.asset(
                       'assets/icons/logout.png',
                       width: 40,
@@ -82,32 +104,47 @@ class _AnggotaPageState extends State<AnggotaPage> {
 
               // Grid Anggota
               Expanded(
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
-                  children: const [
-                    AnggotaCard(
-                      photoPath: 'images/member1.jpg',
-                      name: 'Anugraha Galih S',
-                      nim: '1232201',
-                    ),
-                    AnggotaCard(
-                      photoPath: 'images/member2.jpg',
-                      name: 'Mohammad Fadhil D',
-                      nim: '1232201',
-                    ),
-                    AnggotaCard(
-                      photoPath: 'assets/images/risaa.jpg',
-                      name: 'Ayrisa Trianida',
-                      nim: '123220193',
-                    ),
-                    AnggotaCard(
-                      photoPath: 'assets/images/irishhhh.jpg',
-                      name: 'Gertrud Irish Jovincia',
-                      nim: '123220197',
-                    ),
-                  ],
+                child: GridView.builder(
+                  padding: EdgeInsets.zero,
+                  itemCount: 4,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 16,
+                    childAspectRatio:
+                        0.68, // Tambahkan ini supaya card tidak terlalu tinggi
+                  ),
+                  itemBuilder: (context, index) {
+                    final anggota =
+                        [
+                          {
+                            'photo': 'assets/images/anu.jpg',
+                            'name': 'Anugraha Galih S',
+                            'nim': '123220119',
+                          },
+                          {
+                            'photo': 'assets/images/fadhil.jpg',
+                            'name': 'Mohammad Fadhil D',
+                            'nim': '123220137',
+                          },
+                          {
+                            'photo': 'assets/images/risaa.jpg',
+                            'name': 'Ayrisa Trianida',
+                            'nim': '123220193',
+                          },
+                          {
+                            'photo': 'assets/images/irishhhh.jpg',
+                            'name': 'Gertrud Irish Jovincia',
+                            'nim': '123220197',
+                          },
+                        ][index];
+
+                    return AnggotaCard(
+                      photoPath: anggota['photo']!,
+                      name: anggota['name']!,
+                      nim: anggota['nim']!,
+                    );
+                  },
                 ),
               ),
             ],

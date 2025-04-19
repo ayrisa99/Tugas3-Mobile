@@ -66,81 +66,90 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Spacer(flex: 2),
+        child: SingleChildScrollView(
+          // ini supaya scroll otomatis saat keyboard muncul
+          reverse: true,
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom, // penting!
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const SizedBox(height: 40),
+              Center(
+                child: SizedBox(
+                  height: 350,
+                  child: Image.asset('assets/images/login.png'),
+                ),
+              ),
+              const SizedBox(height: 24),
+              const Text(
+                'Kelompok Yeyeye',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF2E2E2E),
+                ),
+              ),
+              const SizedBox(height: 24),
 
-            Center(
-              child: SizedBox(
-                height: 350,
-                child: Image.asset('assets/images/login.png'),
-              ),
-            ),
-            const SizedBox(height: 24),
-            const Text(
-              'Kelompok Yeyeye',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Color(0xFF2E2E2E),
-              ),
-            ),
-            const SizedBox(height: 24),
-            // Form Email
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 46),
-              child: TextField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: 'Username',
-                  hintText: 'Masukkan username Anda',
-                  filled: true,
-                  fillColor: Colors.grey[300],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide.none,
+              // Form Email
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 46),
+                child: TextField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    labelText: 'Username',
+                    hintText: 'Masukkan username Anda',
+                    filled: true,
+                    fillColor: Colors.grey[300],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 16),
+              const SizedBox(height: 16),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 46),
-              child: TextField(
-                controller: _passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  filled: true,
-                  fillColor: Colors.grey[300],
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    borderSide: BorderSide.none,
+              // Password
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 46),
+                child: TextField(
+                  controller: _passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    filled: true,
+                    fillColor: Colors.grey[300],
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                      borderSide: BorderSide.none,
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SizedBox(height: 24),
-            // Tombol Login
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 46),
-              child: ElevatedButton(
-                onPressed: _login,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFFFF7F50),
-                  foregroundColor: Colors.white,
-                  minimumSize: const Size.fromHeight(50),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
+              const SizedBox(height: 24),
+
+              // Tombol Login
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 46),
+                child: ElevatedButton(
+                  onPressed: _login,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFFF7F50),
+                    foregroundColor: Colors.white,
+                    minimumSize: const Size.fromHeight(50),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
+                  child: const Text('Log in'),
                 ),
-                child: const Text('Log in'),
               ),
-            ),
-            const Spacer(flex: 3),
-          ],
+              const SizedBox(height: 24),
+            ],
+          ),
         ),
       ),
     );

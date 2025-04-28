@@ -37,7 +37,7 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     // Cek login sederhana
-    if (email == 'a' && password == '1') {
+    if (email == 'yeyeye' && password == 'teknomobile') {
       await SessionManager.saveLogin(email); // Kirim email sebagai username
       Navigator.pushReplacement(
         context,

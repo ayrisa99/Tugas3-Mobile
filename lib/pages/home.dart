@@ -220,7 +220,8 @@ class SettingTile extends StatelessWidget {
   final String subtitle;
   final VoidCallback? onLogout; // Menambahkan callback untuk logout
 
-  const SettingTile({super.key, 
+  const SettingTile({
+    super.key,
     required this.iconPath,
     required this.title,
     required this.subtitle,
